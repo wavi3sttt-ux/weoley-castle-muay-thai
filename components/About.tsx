@@ -7,7 +7,7 @@ import { stats } from "@/lib/stats";
 export default function About() {
   return (
     <section id="about" className="relative px-6 py-20 md:py-[120px]">
-      <div className="max-w-[1100px] mx-auto">
+      <div className="max-w-[1200px] mx-auto">
         <Reveal>
           <span className="block text-green-bright text-xs tracking-[0.25em] uppercase font-semibold mb-3">
             About
@@ -96,7 +96,7 @@ export default function About() {
               Professional Roster
             </span>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10">
             {fighters.map((fighter, i) => (
               <Reveal key={fighter.name} delayMs={i * 100}>
                 <FighterCard fighter={fighter} />
@@ -113,7 +113,7 @@ export default function About() {
         <div className="grid grid-cols-2 md:grid-cols-3 mb-20">
           {stats.map((stat, i) => (
             <Reveal key={stat.headline} delayMs={i * 100}>
-              <div className="p-8 px-5 text-center border-t border-l border-green/50">
+              <div className="p-8 px-5 lg:p-10 text-center border-t border-l border-green/50">
                 <h3 className="text-green-bright text-2xl mb-2.5">
                   {stat.headline}
                 </h3>

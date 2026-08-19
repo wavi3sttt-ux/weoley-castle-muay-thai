@@ -6,7 +6,7 @@ const WHATSAPP_URL = "https://wa.me/447487639360";
 export default function Pricing() {
   return (
     <section id="pricing" className="relative px-6 py-20 md:py-[120px]">
-      <div className="max-w-[1100px] mx-auto">
+      <div className="max-w-[1200px] mx-auto">
         <Reveal>
           <span className="block text-green-bright text-xs tracking-[0.25em] uppercase font-semibold mb-3">
             Membership
@@ -16,7 +16,7 @@ export default function Pricing() {
           <h2 className="text-[clamp(2.2rem,6vw,3.6rem)] mb-12">Pricing</h2>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-7 lg:gap-10">
           {pricingPlans.map((plan, i) => (
             <Reveal key={plan.name} delayMs={i * 100}>
               <div

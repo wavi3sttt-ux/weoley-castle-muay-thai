@@ -5,7 +5,7 @@ const WHATSAPP_URL = "https://wa.me/447487639360";
 export default function Contact() {
   return (
     <section id="contact" className="relative px-6 py-20 md:py-[120px]">
-      <div className="max-w-[1100px] mx-auto">
+      <div className="max-w-[1200px] mx-auto">
         <Reveal>
           <span className="block text-green-bright text-xs tracking-[0.25em] uppercase font-semibold mb-3">
             Find Us
@@ -17,7 +17,7 @@ export default function Contact() {
           </h2>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 mb-20">
           <Reveal>
             <div>
               <p className="mb-5 leading-relaxed">

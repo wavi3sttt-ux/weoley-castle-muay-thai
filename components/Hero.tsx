@@ -1,14 +1,21 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ImageWithFallback from "./ImageWithFallback";
 
 const WHATSAPP_URL = "https://wa.me/447487639360";
 const HEADLINE = "KNIVES DOWN. GLOVES UP.";
+const HEADLINE_START_DELAY = 2.5;
 
 export default function Hero() {
   const [bgFailed, setBgFailed] = useState(false);
+  const [glowSettled, setGlowSettled] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setGlowSettled(true), 2500);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
     <section
@@ -34,16 +41,22 @@ export default function Hero() {
       <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(10,10,10,0.6)_100%)]" />
       <div className="absolute bottom-0 left-0 right-0 h-[30%] z-[1] bg-[linear-gradient(to_top,rgba(10,10,10,0.7),transparent)]" />
 
-      <div className="relative z-[2] flex-1 flex flex-col justify-start pt-8 md:pt-12 items-center text-center max-w-[600px] w-full mx-auto">
+      <div className="cinematic-flash pointer-events-none absolute inset-0 z-[6] bg-offwhite" />
+
+      <div className="relative z-[2] flex-1 flex flex-col justify-start pt-8 md:pt-12 items-center text-center w-full">
         <div className="relative mb-7">
-          <div className="logo-glow absolute top-1/2 left-1/2 w-[460px] h-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(45,122,62,0.45)_0%,transparent_70%)] z-0" />
+          <div
+            className={`absolute top-1/2 left-1/2 w-[460px] h-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(45,122,62,0.45)_0%,transparent_70%)] z-0 ${
+              glowSettled ? "logo-glow" : "glow-intro"
+            }`}
+          />
           <ImageWithFallback
             src="/logo.png"
             alt="Weoley Castle Muay Thai logo"
             width={420}
             height={420}
             priority
-            className="relative z-[1] max-w-[320px] md:max-w-[420px] w-full h-auto block"
+            className="logo-intro relative z-[1] max-w-[320px] md:max-w-[420px] w-full h-auto block"
             fallbackLabel="WEOLEY CASTLE MUAY THAI"
             fallbackClassName="relative z-[1] w-[320px] h-[320px] max-w-[70vw] text-lg"
             onError={(e) => {
@@ -53,7 +66,7 @@ export default function Hero() {
         </div>
 
         <h1
-          className="text-[clamp(2.4rem,8vw,5.5rem)] mb-5"
+          className="w-full px-2 md:whitespace-nowrap text-[clamp(2rem,6vw,5.5rem)] mb-5"
           style={{ textShadow: "0 4px 20px rgba(0,0,0,0.9)" }}
         >
           {HEADLINE.split("").map((ch, i) =>
@@ -63,7 +76,9 @@ export default function Hero() {
               <span
                 key={i}
                 className="letter"
-                style={{ animationDelay: `${i * 0.035}s` }}
+                style={{
+                  animationDelay: `${HEADLINE_START_DELAY + i * 0.035}s`,
+                }}
               >
                 {ch}
               </span>
