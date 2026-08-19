@@ -28,7 +28,7 @@ export default function Hero() {
           alt=""
           fill
           priority
-          className="object-cover object-[75%_center] md:object-[70%_center] lg:object-center z-0"
+          className="object-cover object-[60%_center] md:object-[70%_center] lg:object-center z-0"
           onError={(e) => {
             console.error("hero-bg.jpg failed to load", e);
             setBgFailed(true);
